@@ -1,6 +1,6 @@
-Download or make a clone of the repository
-Make a new conda environment using the environment file 'mlp_dnn.yml'
-Run the python files directly using a python IDE or from command line
+1. Download or make a clone of the repository
+2. Make a new conda environment using the environment file 'mlp_dnn.yml'
+3. Run the python files directly using a python IDE or from command line
 
 Notes:
 

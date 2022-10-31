@@ -4,7 +4,7 @@
 
 Notes:
 
-The function file is KiNet_mlp.py. Therefore, directly run the other python files apart from this one.
+The function file is KiNet_mlp.py and datasets_molpred_2D_1image_resnet.py under image_processing folder. Therefore, directly run the other python files apart from this one.
 
 The objectives and usage of the rest of the scripts are as follows: Please run the python scripts directly or using the command line 'python <script_name.py> from the terminal
 

@@ -4,22 +4,22 @@
 
 Notes:
 
-The function file is KiNet_mlp.py and datasets_molpred_2D_1image_resnet.py under image_processing folder. Therefore, directly run the other python files apart from this one.
+The function files are KiNet_mlp.py and datasets_molpred_2D_1image_resnet.py under image_processing folder. Therefore, directly run the other python files apart from this one.
 
 The objectives and usage of the rest of the scripts are as follows: Please run the python scripts directly or using the command line 'python <script_name.py> from the terminal
 
-(i) MLP_only_train_test_hybrid_pchembl_MW_without_shannon_entropy.py: This script could run MLP-based deep neural network model for pchembl/MW prediction (of IC50 of Tissue Factor Pathway Inhibitor) without using any Shannon entropies as descriptor and only using the MW as the sole descriptor. The target is MW-normalized pchembl value or pchembl/MW.
+(i) Image dataset download or data acquisition: Run the chembl_target_mol_featurizer_Ki_atom_labels.py file directly to build the image dataset which will be saved in the folder Ki_targets_atom_labels_wo_Milvexian_BMS. This script also extracts and saves a descriptor set from the CHEMBL website to Ki_dataset_all_filtered_features_atom_labels_wo_Milvexian_BMS.csv.
 
-(ii) MLP_only_train_test_hybrid_pchembl_MW_with_shannon_entropy.py: This script could run MLP-based deep neural network model for pchembl/MW prediction (of IC50 of Tissue Factor Pathway Inhibitor) using Shannon entropy (SMILES/SMARTS/InChiKey-based) as descriptor along with the MW as the other descriptor
+(ii) CNN_MLP_pchembl_MW_partial_shannon_f11a_Ki.py: This script models Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors. The model is a hybrid one consists of MLP and CNN based hybrid deep neural network. The model predicts Ki values of the molecules as per the test data set.
 
-(iii) MLP_only_train_test_hybrid_pchembl_MW_with_shannon_entropy_smiles_smarts_inchikey_partial_shannon_smiles.py: This script could run MLP only model for pchembl/MW prediction (of IC50 of Tissue Factor Pathway Inhibitor) using combination of Shannon entropies (SMILES Shannon, SMARTS Shannon, InChiKey Shannon and SMILES partial/ fractional Shannon) and MW as descriptors. The SMILES-based fractional Shannon could add more accuracy to the model prediction.
+(iii) MLP_only_pchembl_MW_partial_shannon_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors.
 
-(iv) MLP_only_train_test_hybrid_ligand_eff_without_shannon_entropy.py: This script could run MLP-based deep neural network model for predicting BEI (Ligand Binding Efficiency Index) values of molecules (ligands of Tissue Factor Pathway Inhibitor) without using any Shannon entropies as descriptor and only using the MW as the sole descriptor
+(iv) MLP_only_pchembl_MW_shannon_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropy and MW as descriptors.
 
-(v) MLP_only_train_test_hybrid_ligand_eff_with_shannon_entropy.py:This script could run an MLP only model for predicting BEI values of molecules (ligands of Tissue Factor Pathway Inhibitor) with using Shannon entropy as a descriptor along with using the MW as the other descriptor
+(v) MLP_only_pchembl_MW_shannon_partial_shannon_bond_freq_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropies (SMILES/SMARTS/InChiKey-based), fractional Shannon entropy, bond frequency and MW as descriptors.
 
-(vi) MLP_only_train_test_hybrid_ligand_eff_with_shannon_entropy_smiles_smarts_inchikey_with_partial_shannon.py: This script could run MLP-based deep neural network model for predicting BEI values of molecules (ligands of Tissue Factor Pathway Inhibitor) using combination of Shannon entropies (SMILES Shannon, SMARTS Shannon, InChiKey Shannon and SMILES partial/ fractional Shannon) and MW as descriptors
+(vi) MLP_only_pchembl_MW_shannon_partial_shannon_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors.
 
-(vii) MLP_only_train_test_hybrid_ligand_eff_with_morgan_fingerprint.py:This script could run MLP-based deep neural network model for predicting BEI values of molecules (ligands of Tissue Factor Pathway Inhibitor) using different combinations of Morgan Fingerprint (with or without), Shannon entropies (SMILES Shannon and SMILES partial/ fractional Shannon) and MW as descriptors
+(vii) MLP_only_pchembl_MW_shannon_partial_shannon_ligand_BEI_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropies, fractional Shannon entropy, ligand BEI and MW as descriptors. 
 
-(viii) MLP_only_train_test_hybrid_pCHEMBL_with_shannon_entropy_and_other descriptors.py: This script could run MLP-based deep neural network model for pchembl/MW prediction (of IC50 of Tissue Factor Pathway Inhibitor) using Shannon entropy as descriptor along with using BEI and MW as other descriptors (Ligand Efficiency BEI prediction from script#(vii))
+(viii) Query_MLP_only_MILVEXIAN.py: This program predicts Ki value of a particular, unknown ligand molecule (MILVEXIAN) to target protein coagulation factor F11 by querying an already developed model (running script (vii) above) using the following descriptors- Shannon entropy (SMILES), ligand BEI and MW of the molecule.

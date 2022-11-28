@@ -20,6 +20,6 @@ The objectives and usage of the rest of the scripts are as follows: Please run t
 
 (vi) MLP_only_pchembl_MW_shannon_partial_shannon_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors.
 
-(vii) MLP_only_pchembl_MW_shannon_partial_shannon_ligand_BEI_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropies, fractional Shannon entropy, ligand BEI and MW as descriptors. 
+(vii) MLP_only_pchembl_MW_shannon_partial_shannon_ligand_BEI_f11a_Ki.py: This program predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropies, fractional Shannon entropy, ligand BEI and MW as descriptors on the test dataset.
 
-(viii) Query_MLP_only_MILVEXIAN.py: This program predicts Ki value of a particular, unknown ligand molecule (MILVEXIAN) to target protein coagulation factor F11 by querying an already developed model (running script (vii) above) using the following descriptors- Shannon entropy (SMILES), ligand BEI and MW of the molecule.
+(viii) Query_MLP_only_MILVEXIAN.py: This program predicts Ki value of a particular, unknown ligand molecule (here MILVEXIAN as example) to target protein coagulation factor F11 by querying an already developed model (through running script (vii) above) using the following descriptors- Shannon entropy (SMILES), ligand BEI and MW of the molecule.

@@ -1,11 +1,5 @@
 ### This script will download/ retrieve all 2D images of molecules and their corresponding features (or properties) as available from CHEMBL database given an input file list
 
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Sep  3 10:38:28 2021
-
-@author: Rajarshi Guha
-"""
 
 from chembl_webresource_client.utils import utils
 from chembl_webresource_client.new_client import new_client
@@ -25,11 +19,9 @@ import pandas as pd
 # print("The molecule_properties: ", data["molecule_properties"])
 
 
-# Getting the list of molecules from the .csv
+# Getting the list of molecules from the .csv file
 IC50_data_list = pd.read_csv('F11a_targets_Ki_only_equal_values_edited_wo_Milvexian_BMS.csv', encoding='cp1252') 
 mol_list = IC50_data_list['Molecule ChEMBL ID'].values
-
-
 
 # Defining the dictionary elements
 alogp = []
@@ -54,7 +46,7 @@ qed_weighted = []
 ro3_pass = []
 rtb = []
 
-## loop over the entire molecule list to build the database
+# loop over the entire molecule list to build the database
 for i in range(len(mol_list)):
     
     mol = mol_list[i]
@@ -199,21 +191,15 @@ features = {'alogp': alogp, 'aromatic_rings': aromatic_rings, 'cx_logd': cx_logd
             'cx_most_bpka': cx_most_bpka, 'full_mwt': full_mwt, 'hba': hba, 'hba_lipinski': hba_lipinski, 'hbd': hbd, 'hbd_lipinski': hbd_lipinski, 'heavy_atoms': heavy_atoms,
             'molecular_species': molecular_species, 'mw_freebase': mw_freebase, 'mw_monoisotopic': mw_monoisotopic, 'num_lipinski_ro5_violations': num_lipinski_ro5_violations,
             'num_ro5_violations': num_ro5_violations, 'psa':  psa, 'qed_weighted': qed_weighted, 'ro3_pass': ro3_pass, 'rtb': rtb  }    
-
-# features = {'alogp': alogp, 'aromatic_rings': aromatic_rings, 'cx_logd': cx_logd, 'cx_logp': cx_logp, 'cx_most_apka': cx_most_apka,
-#             'cx_most_bpka': cx_most_bpka, 'full_mwt': full_mwt, 'hba': hba, 'hba_lipinski': hba_lipinski, 'hbd': hbd, 'hbd_lipinski': hbd_lipinski, 'heavy_atoms': heavy_atoms,
-#              'mw_freebase': mw_freebase, 'mw_monoisotopic': mw_monoisotopic, 'num_lipinski_ro5_violations': num_lipinski_ro5_violations,
-#             'num_ro5_violations': num_ro5_violations, 'psa':  psa, 'qed_weighted': qed_weighted, 'ro3_pass': ro3_pass, 'rtb': rtb  }    
     
-
 df_mol = pd.DataFrame(features)
 print(df_mol)
 
-# # Concatenating more data (selected columns) from IC50_data_list and adding to df_mol
+# Concatenating more data (selected columns) from IC50_data_list and adding to df_mol
 df_mol = pd.concat([  df_mol, IC50_data_list['Molecular Weight'], IC50_data_list['Ligand Efficiency BEI'], IC50_data_list['Ligand Efficiency LE'], IC50_data_list['Ligand Efficiency LLE'], IC50_data_list['Ligand Efficiency SEI'], IC50_data_list['pChEMBL Value'],  IC50_data_list['Smiles']   ], axis = 1)
 
 # # Data Engineering
-# # Solution#1: deleting all the rows corresponding to ''/'nan'/ 'None' after noting down the row index 
+# # deleting all the rows corresponding to ''/'nan'/ 'None' after noting down the row index 
 
 # # Finding the row indices where any column element is missing
 
@@ -230,8 +216,8 @@ df_mol = pd.concat([  df_mol, IC50_data_list['Molecular Weight'], IC50_data_list
             
 
         
-# Solution#2: Deleting the column with most of the missing data from df_mol and using the rest of the datatable for the Solution#1
-# Dropping the column 'cx_most_bpka'
+# # deleting the column with most of the missing data from df_mol and using the rest of the datatable 
+# # dropping the column 'cx_most_bpka' as many values are missing
 df_mol = df_mol.drop(['cx_most_bpka'], axis = 1)         
     
 row_index_for_missing_col = []
@@ -296,5 +282,4 @@ new_df_mol.drop(['Smiles'], axis = 1, inplace = True)
 new_df_mol.drop(['ro3_pass'], axis = 1, inplace = True)
 
 # ## Saving the final dataframe as a csv
-# new_df_mol.to_csv('Ki_dataset_all_filtered_features_atom_labels.csv', index=False)
 new_df_mol.to_csv('Ki_dataset_all_filtered_features_atom_labels_wo_Milvexian_BMS.csv', index=False)

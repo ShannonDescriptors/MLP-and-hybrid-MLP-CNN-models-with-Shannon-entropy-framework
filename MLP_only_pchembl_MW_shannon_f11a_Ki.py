@@ -116,7 +116,7 @@ shannon_smiles = pd.DataFrame(shannon_arr, columns = ["shannon_smiles"] )
         
 ###---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### concatenating different feature combinations along with the target column to feed into MLP
+### concatenating different feature combinations along with the target column to feed into MLP. In this case the features are MW and Shannon entropy (SMILES).
 df_new = pd.concat([ df['full_mwt'], shannon_smiles, df['pChEMBL Value'] ], axis = 1)
 
 print("[INFO] constructing training/ testing split")

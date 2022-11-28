@@ -1,5 +1,4 @@
-# This program predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors
-
+# This hybrid model architecture predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors for MLP-based deep neural network model and 2D images of molecules as inputs for CNN-based dep neural network model
 
 # import the necessary packages
 from imutils import paths

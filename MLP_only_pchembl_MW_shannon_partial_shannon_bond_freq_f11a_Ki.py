@@ -463,7 +463,7 @@ fp_mol = pd.DataFrame(fp_combined)
 # bond frequency as feature
 fp_bond = pd.DataFrame(fp_combined_bond)
 
-# constructing a new df column containng only MW, shannon values, bond frequencies and target column
+# constructing a new df column containng only MW, Shannon entropy values, fractional Shannon (fp_mol) bond frequencies (fp_bond) and target column
 df_1 = pd.DataFrame( df['full_mwt'].values)
 df_2 = pd.DataFrame(df['shannon_smiles'].values)
 df_3 = pd.DataFrame(df['shannon_smarts'].values)

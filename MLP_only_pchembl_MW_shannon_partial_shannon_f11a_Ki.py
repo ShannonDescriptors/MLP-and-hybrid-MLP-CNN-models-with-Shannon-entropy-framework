@@ -1,4 +1,4 @@
-# This program predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors
+# This program predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropy framework: Shannon entropies based on SMILES, SMARTS and InChiKey, fractional Shannon entropy and MW as descriptors
 
 
 # import the necessary packages

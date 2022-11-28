@@ -4,13 +4,13 @@
 
 Notes:
 
-The function files are KiNet_mlp.py and datasets_molpred_2D_1image_resnet.py under image_processing folder. Therefore, directly run the other python files apart from this one.
+The function files are KiNet_mlp.py and datasets_molpred_2D_1image_resnet.py under image_processing folder. Therefore, directly run the other python files apart from these ones.
 
 The objectives and usage of the rest of the scripts are as follows: Please run the python scripts directly or using the command line 'python <script_name.py> from the terminal
 
 (i) Image dataset download or data acquisition: Run the chembl_target_mol_featurizer_Ki_atom_labels.py file directly to build the image dataset which will be saved in the folder Ki_targets_atom_labels_wo_Milvexian_BMS. This script also extracts and saves a descriptor set from the CHEMBL website to Ki_dataset_all_filtered_features_atom_labels_wo_Milvexian_BMS.csv.
 
-(ii) CNN_MLP_pchembl_MW_partial_shannon_f11a_Ki.py: This script models Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors. The model is a hybrid one consists of MLP and CNN based hybrid deep neural network. The model predicts Ki values of the molecules as per the test data set.
+(ii) CNN_MLP_pchembl_MW_partial_shannon_f11a_Ki.py: This script models Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors. The model is a hybrid one comprising of MLP and CNN based hybrid deep neural network. The model predicts Ki values of the molecules as per the test data set.
 
 (iii) MLP_only_pchembl_MW_partial_shannon_f11a_Ki.py: This program predicts Ki values (on test dataset) in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with fractional Shannon entropy and MW as descriptors.
 

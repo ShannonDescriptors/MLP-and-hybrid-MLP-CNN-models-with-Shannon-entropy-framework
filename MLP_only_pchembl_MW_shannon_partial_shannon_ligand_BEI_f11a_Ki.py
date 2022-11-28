@@ -1,7 +1,5 @@
 # This program predicts Ki values in the form of pCHEMBL/MW values of molecules for the target protein coagulation factor F11a with Shannon entropies, fractional Shannon entropy, ligand BEI and MW as descriptors
 
-
-
 # import the necessary packages
 import os
 import numpy as np
@@ -47,8 +45,6 @@ print("Shape of the pCHEMBL labels array", df_target.shape)
 maxPrice = df.iloc[:,-1].max() # grab the maximum price in the training set's last column
 minPrice = df.iloc[:,-1].min() # grab the minimum price in the training set's last column
 print(maxPrice,minPrice)
-
-
 
 ### Smiles shannon as a feature
 ## Generate a new column with title 'shannon_smiles'. Evaluate the Shannon entropy for each smile string and store into 'shannon_smiles' column
@@ -352,7 +348,7 @@ for j in range(0,len(df_smiles)):
 max_len_smiles = max(len_smiles)
 
 
-# Constructing the padded array of partial shannon per molecule
+# Constructing the padded array of fractional or partial shannon per molecule
 def ps_padding(ps, max_len_smiles):
     
     len_ps = len(ps)
@@ -364,13 +360,12 @@ def ps_padding(ps, max_len_smiles):
     
     return ps_padded 
 
-
-
 fp_combined = []
 shannon_arr = []
 for i in range(0,len(df_smiles)):  
     
   mol = Chem.MolFromSmiles(df_smiles[i])
+
   ### estimating the partial shannon for an atom type => the current node
   total_shannon = df['shannon_smiles'][i]
   shannon_arr.append( total_shannon )
@@ -399,10 +394,10 @@ for i in range(0,len(df_smiles)):
 # Smiles shannon as a feature
 shannon_smiles = pd.DataFrame(shannon_arr, columns = ["shannon_smiles"] )
 
-# partial shannon_entropy as feature
+# partial or fractional Shannon entropy as feature
 fp_mol = pd.DataFrame(fp_combined)
 
-# constructing a new df column containng only MW, shannon smiles, ligands BEI ana tagets/labels
+# constructing a new df column containng only MW, shannon smiles (SMILES Shannon), ligands BEI ana tagets/labels
 df_1 = pd.DataFrame( df['full_mwt'].values)
 df_2 = pd.DataFrame(df['shannon_smiles'].values)
 df_3 = pd.DataFrame(df['shannon_smarts'].values)
@@ -440,12 +435,9 @@ XtrainData, XtestData = trainContinuous,testContinuous
 print("XtrainData shape",XtrainData.shape)
 print("XtestData shape",XtestData.shape)
 
-
 # Processing output of MLP model
 mlp = KiNet_mlp.create_mlp(XtrainData.shape[1], regress = False) # the input dimension to mlp would be shape[1] of the matrix i.e. column features
 print("shape of mlp", mlp.output.shape)
-
-
 
 # The final input to our last layer will be concatenated output from MLP layers
 combinedInput = mlp.output

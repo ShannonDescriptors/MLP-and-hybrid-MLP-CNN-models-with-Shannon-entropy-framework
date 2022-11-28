@@ -1,4 +1,4 @@
-# This program predicts Ki value of a particular ligand molecule to target protein coagulation factor F11 by querying an already developed model developed with the following descriptors with Shannon entropies, fractional Shannon entropy, ligand BEI and MW 
+# This program predicts Ki value of a particular ligand molecule to target protein coagulation factor F11 by querying an already developed model developed with the following descriptors which are Shannon entropies, fractional Shannon entropy, ligand BEI and MW 
 
 # getting the necessary packages
 from tensorflow.keras.models import load_model
@@ -6,7 +6,6 @@ from sklearn.preprocessing import MinMaxScaler
 
 import numpy as np
 import pandas as pd
-
 
 import matplotlib.pyplot as plt
 
@@ -34,7 +33,7 @@ def F11a_Ki_query( input_vector, scaling_factor ):
     return Ki_pred
 
 
-### Estimation of Smiles shannon as a feature
+### Estimation of Shannon entropy of SMILES as a feature
 
 SMI_REGEX_PATTERN = r"""(\[[^\]]+]|Br?|Cl?|N|O|S|P|F|I|b|c|n|o|s|p|\(|\)|\.|=|#|-|\+|\\|\/|:|~|@|\?|>>?|\*|\$|\%[0-9]{2}|[0-9])"""
 regex = re.compile(SMI_REGEX_PATTERN)
@@ -102,8 +101,6 @@ def shannon_entropy_smiles(mol_smiles):
     return shannon    
 
 
-
-
 if __name__ == '__main__':
     
 
@@ -114,7 +111,7 @@ if __name__ == '__main__':
     opts = MolDrawOptions()
     
     
-    # Prediction of Ki of MILVEXIAN
+    ### Prediction of Ki of MILVEXIAN
     
     # Importing SMILES of the MILVEXIAN molecule
     smiles_string = 'C[C@@H]1CCC[C@H](n2cnc(-c3cc(Cl)ccc3-n3cc(Cl)nn3)cc2=O)c2cc(ccn2)-c2c(cnn2C(F)F)NC1=O'

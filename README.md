@@ -1,3 +1,5 @@
+# MLP & MLP+CNN models for Ki 
+
 Harnessing Shannon entropy of molecular symbols in deep neural networks to enhance prediction accuracy
 ------------------------------------------------------------------------------------------------------
 This repository holds the codes pertaining to Figs. 2a-b of the article 'Harnessing Shannon entropy of molecular symbols in deep neural networks to enhance prediction accuracy'.
